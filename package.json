@@ -1,0 +1,33 @@
+{
+  "name": "express-mvc-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=dev nodemon app"
+  },
+  "dependencies": {
+    "async": "latest",
+    "body-parser": "~1.13.2",
+    "connect": "latest",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.3",
+    "express": "~4.13.1",
+    "express-mailer": "^0.3.0",
+    "express-session": "latest",
+    "fs-extra": "latest",
+    "http-proxy": "latest",
+    "md5": "latest",
+    "mime": "latest",
+    "morgan": "~1.6.1",
+    "mysql": "^2.13.0",
+    "node-constants": "latest",
+    "nodemon": "latest",
+    "numeral": "latest",
+    "q": "^1.5.0",
+    "request": "latest",
+    "serve-favicon": "~2.3.0",
+    "simple-encryptor": "latest",
+    "underscore": "latest"
+  }
+}
+

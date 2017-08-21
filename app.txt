@@ -1,0 +1,32 @@
+var express = require('express');
+var app = express();
+
+
+var port = process.env.PORT || 8008;
+
+var path = require('path');
+
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+
+
+//set up our express application
+app.use(morgan('dev')); // log every request to the console
+
+//view engine setup
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'app/views'));
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// routes ======================================================================
+require('./config/routes.js')(app, bodyParser); //load our routes and pass in our app and fully configured passport
+
+
+//launch ======================================================================
+app.listen(port);
+
+console.log('Your Application is now running on ' + port);
+
+exports = module.exports = app;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>main app view</title>
+	<style>
+		body{margin:0; padding:0; background-color: #f0f0f0; font-family: "Verdana"}
+
+	</style>
+</head>
+<body>
+	<h1>Create, Read, Update and Delete in Node and mysql</h1>
+	
+	<button id="showAll">Get all the data</button>
+
+	<div>
+		
+			enter empid <input type="text" name="empId" /> <br/>
+			enter empName <input type="text" name="empName" /> <br/>
+			enter description <input type="text" name="description" /> <br/>
+
+			<button id="c">Submit data</button>
+
+			<div id="view"> </div>
+		
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<script>
+		$(function(){
+			$('#showAll').on('click', function(){
+				$.ajax({
+					'url':'/getData',
+					'method':'GET'
+				}).then(function(r){
+					$('#view').html(JSON.stringify(r));
+				})			
+			});
+
+			$('#c').on('click', function(e){
+				e.preventDefault();
+				var payload = {
+					empId:$('[name=empId]').val(),
+					empName:$('[name=empName]').val(),
+					description:$('[name=description]').val()
+				};
+				$.ajax({
+					'url':'/setData',
+					method:'POST',
+					data:payload
+				}).then(function(r){
+					console.log(r);
+				})
+			})
+				
+		})
+
+	</script>
+</body>
+</html>
